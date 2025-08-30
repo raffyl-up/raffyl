@@ -161,6 +161,46 @@ contract Event is IEvent, Ownable, ReentrancyGuard {
     }
 
 
+    function getEventInfo() external view override returns (
+        string memory,
+        address,
+        address,
+        uint256,
+        uint256,
+        EventState,
+        uint256,
+        bool
+    ) {
+        return (
+            name,
+            organizer,
+            address(prizeToken),
+            prizeAmount,
+            winnerCount,
+            currentState,
+            participants.length,
+            isFunded
+        );
+    }
+
+
+    function getParticipants() external view override returns (address[] memory) {
+        return participants;
+    }
+
+    function getWinners() external view override returns (address[] memory) {
+        return winners;
+    }
+
+ 
+    function getContractBalance() external view returns (uint256 balance) {
+        if (address(prizeToken) == address(0)) {
+            return address(this).balance;
+        } else {
+            return prizeToken.balanceOf(address(this));
+        }
+    }
+
 
     function emergencyRecoverTokens(address tokenAddress, uint256 amount) external onlyOwner {
         require(currentState != EventState.COMPLETED, "Event: Cannot recover from completed event");
