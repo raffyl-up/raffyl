@@ -16,7 +16,6 @@ import EventFactory from "./components/EventFactory";
 import EventList from "./components/EventList";
 import EventDetail from "./components/EventDetail";
 
-// Main App Layout Component
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
@@ -29,7 +28,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const AppHeader: React.FC<{ showNavigation?: boolean }> = ({
   showNavigation = true,
 }) => {
-  // Use showNavigation parameter to avoid TypeScript warning
+  
   console.log("Header navigation visibility:", showNavigation);
   return (
     <header className="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-500 text-white">
@@ -95,7 +94,7 @@ const AppNavigation: React.FC<{
   );
 };
 
-// Footer Component
+
 const AppFooter: React.FC = () => {
   return (
     <footer className="bg-white/5 backdrop-blur-sm border-t border-white/10 mt-auto">
@@ -121,7 +120,7 @@ const MainApp: React.FC = () => {
       <AppHeader />
       <AppNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* Main Content */}
+    
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {activeTab === "events" && <EventList />}
         {activeTab === "create" && <EventFactory />}
@@ -137,7 +136,7 @@ const LandingPageWrapper: React.FC = () => {
   return (
     <>
       <LandingPage />
-      {/* Floating navigation to access the app */}
+
       <div className="fixed top-4 right-4 z-50">
         <a
           href="/app"
@@ -150,13 +149,13 @@ const LandingPageWrapper: React.FC = () => {
   );
 };
 
-// Event Detail Page Wrapper
+
 const EventDetailWrapper: React.FC = () => {
   return (
     <AppLayout>
       <AppHeader showNavigation={false} />
 
-      {/* Main Content */}
+      
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         <EventDetail />
       </main>
