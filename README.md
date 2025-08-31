@@ -1,18 +1,56 @@
-# Sample Hardhat Project
+# Raffyl
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Raffyl is a decentralized application (dApp) for **fun, fair, and instant raffles**.  
+It enables event organizers, creators, and communities to run giveaways where winners are chosen transparently and rewarded instantly on-chain.
 
-Try running some of the following tasks:
+---
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+## ✨ Features
+- **Provably Fair Randomness** — winners are selected using blockchain-based randomness.  
+- **Instant Payouts** — tokens are sent directly to winners’ wallets, no delays.  
+- **Audience Engagement** — live raffle spin with real-time winner display.  
+- **Simple Onboarding** — participants join via QR code + wallet (social/email sign-in coming soon).  
 
-## Deployed Addresses
+---
 
-EventModule#Event - 0x0Cc3B823A8D4d9F4e5816240634b4C673e2F47aB
-EventFactoryModule#EventFactory - 0xeFA483e112DC1221a9D7Ac798f42978fB5C0b669
+## 🎯 Use Cases
+- Event giveaways (conferences, hackathons, meetups)  
+- Online raffles for creators and influencers  
+- Community rewards for DAOs and social clubs  
+- Fan engagement campaigns  
+
+---
+
+## 🚀 How It Works
+1. **Organizer** sets up a raffle: define prize tokens + number of winners.  
+2. **Participants** scan a QR code and sign in with their wallet.  
+3. **Spin the Wheel** — organizer clicks *Spin*; results display live on screen.  
+4. **Winners Rewarded** — tokens are transferred instantly to selected winners.  
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React + Web3 integrations  
+- **Smart Contracts:** Solidity (for randomness & prize distribution)  
+- **Randomness:** Chainlink VRF (or equivalent)  
+- **Wallets:** EVM-compatible wallets (future: email/social login)  
+
+---
+
+## 📦 Getting Started (Developers)
+
+### Prerequisites
+- Node.js >= 18
+- npm or yarn
+- Metamask or any EVM wallet
+
+### Installation
+```bash
+git clone https://github.com/your-org/raffyl.git
+cd raffyl
+npm install
+npm run dev
+
+### License
+
+This project is licensed under the MIT License. See LICENSE file for details.

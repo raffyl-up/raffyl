@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Contract } from 'ethers';
 import { GiWheelbarrow } from 'react-icons/gi';
-import { useWeb3 } from '../Web3Context';
-import { CONTRACT_ADDRESSES, EVENT_FACTORY_ABI, parseTokenAmount, isContractDeployed } from '../contracts';
+import { CONTRACT_ADDRESSES, EVENT_FACTORY_ABI, parseTokenAmount, isContractDeployed } from '../contracts.ts';
 import { SUPPORTED_TOKENS } from '../lib/constants';
 import { toastService } from '../services/toast';
 import TokenSelector from './ui/TokenSelector';
 import Button from './ui/Button';
 import Card from './ui/Card';
+import { useWeb3 } from '../Web3Context';
 
 const EventFactory: React.FC = () => {
   const { signer, isConnected } = useWeb3();
@@ -164,7 +164,7 @@ const EventFactory: React.FC = () => {
 
         <TokenSelector
           value={formData.selectedToken}
-          onChange={(tokenSymbol) => setFormData(prev => ({ ...prev, selectedToken: tokenSymbol }))}
+          onChange={(tokenSymbol : any) => setFormData(prev => ({ ...prev, selectedToken: tokenSymbol }))}
           required
         />
 
