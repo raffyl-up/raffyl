@@ -65,7 +65,7 @@ const EventDetail: React.FC = () => {
     try {
       const eventContract = new Contract(eventAddress, EVENT_ABI, provider);
 
-      // Get basic event info
+      
       const [
         name,
         organizer,
@@ -86,13 +86,13 @@ const EventDetail: React.FC = () => {
         eventContract.getContractBalance()
       ]);
 
-      // Get participants and winners
+      
       const [participants, winners] = await Promise.all([
         eventContract.getParticipants(),
         eventContract.getWinners()
       ]);
 
-      // Get token info
+      
       let tokenSymbol = 'TOKEN';
       let tokenDecimals = 18;
       
@@ -112,7 +112,7 @@ const EventDetail: React.FC = () => {
         }
       }
 
-      // Check user registration and winner status
+      
       let isUserRegistered = false;
       let isUserWinner = false;
       
@@ -164,7 +164,7 @@ const EventDetail: React.FC = () => {
       setTxHash(tx.hash);
 
       await tx.wait();
-      await loadEventData(); // Refresh data
+      await loadEventData(); 
     } catch (error: any) {
       console.error('Error registering:', error);
       setActionError(error.message || 'Failed to register');
@@ -188,15 +188,14 @@ const EventDetail: React.FC = () => {
       let fundTx;
 
       if (isNativeToken(event.tokenAddress)) {
-        // For native ETH, send value directly
         fundTx = await eventContract.fundEvent(amountWei, {
           value: amountWei
         });
       } else {
-        // For ERC20 tokens, first approve then fund
+        
         const tokenContract = new Contract(event.tokenAddress, ERC20_ABI, signer);
 
-        // Check current allowance
+        
         const currentAllowance = await tokenContract.allowance(await signer.getAddress(), event.address);
 
         if (currentAllowance < amountWei) {
@@ -204,14 +203,14 @@ const EventDetail: React.FC = () => {
           await approveTx.wait();
         }
 
-        // Then fund the event
+        
         fundTx = await eventContract.fundEvent(amountWei);
       }
 
       setTxHash(fundTx.hash);
       await fundTx.wait();
       setFundAmount('');
-      await loadEventData(); // Refresh data
+      await loadEventData(); 
     } catch (error: any) {
       console.error('Error funding event:', error);
       setActionError(error.message || 'Failed to fund event');
@@ -233,7 +232,7 @@ const EventDetail: React.FC = () => {
       setTxHash(tx.hash);
 
       await tx.wait();
-      await loadEventData(); // Refresh data
+      await loadEventData(); 
     } catch (error: any) {
       console.error('Error selecting winners:', error);
       setActionError(error.message || 'Failed to select winners');
@@ -255,7 +254,7 @@ const EventDetail: React.FC = () => {
       setTxHash(tx.hash);
 
       await tx.wait();
-      await loadEventData(); // Refresh data
+      await loadEventData();
     } catch (error: any) {
       console.error('Error disbursing prizes:', error);
       setActionError(error.message || 'Failed to disburse prizes');
@@ -282,7 +281,7 @@ const EventDetail: React.FC = () => {
     try {
       const eventContract = new Contract(event.address, EVENT_ABI, signer);
 
-      // Check contract balance first
+      
       if (event.contractBalance === 0n) {
         setActionError("No balance to withdraw");
         return;
@@ -291,7 +290,7 @@ const EventDetail: React.FC = () => {
       const tx = await eventContract.withdrawBalance();
       setTxHash(tx.hash);
       await tx.wait();
-      loadEventData(); // Refresh data
+      loadEventData(); 
     } catch (error: any) {
       console.error('Error withdrawing balance:', error);
       setActionError(error.message || 'Failed to withdraw balance');
@@ -315,7 +314,7 @@ const EventDetail: React.FC = () => {
     return (
       <div className="w-full max-w-6xl mx-auto">
         <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 text-center">
-          <p className="text-red-600 mb-4">❌ {error || 'Event not found'}</p>
+          <p className="text-red-600 mb-4">{error || 'Event not found'}</p>
           <button
             onClick={() => navigate('/')}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
@@ -336,7 +335,7 @@ const EventDetail: React.FC = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto space-y-6 sm:space-y-8">
-      {/* Header */}
+      
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <button
           onClick={() => navigate('/app')}
@@ -353,13 +352,13 @@ const EventDetail: React.FC = () => {
               className="text-white/60 hover:text-white text-xs p-1 rounded"
               title="Copy address"
             >
-              📋
+              
             </button>
           </div>
         </div>
       </div>
 
-      {/* Event Hero Card */}
+      {/* hero card */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6 sm:p-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -386,7 +385,7 @@ const EventDetail: React.FC = () => {
         </div>
 
         <div className="p-6 sm:p-8">
-          {/* Key Metrics */}
+          
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
               <p className="text-2xl sm:text-3xl font-bold text-blue-600">{event.participantCount.toString()}</p>
@@ -410,11 +409,11 @@ const EventDetail: React.FC = () => {
             </div>
           </div>
 
-          {/* Event Details */}
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                📋 Event Information
+             Event Information
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
@@ -434,7 +433,7 @@ const EventDetail: React.FC = () => {
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600 font-medium">Funding Status:</span>
                   <span className={`font-semibold ${event.isFunded ? 'text-green-600' : 'text-red-600'}`}>
-                    {event.isFunded ? "✅ Funded" : "❌ Not Funded"}
+                    {event.isFunded ? "Funded" : "Not Funded"}
                   </span>
                 </div>
               </div>
@@ -442,7 +441,7 @@ const EventDetail: React.FC = () => {
 
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                🔗 Contract Details
+                Contract Details
               </h3>
               <div className="space-y-3">
                 <div>
@@ -456,7 +455,7 @@ const EventDetail: React.FC = () => {
                       className="text-gray-500 hover:text-gray-700 text-xs p-1"
                       title="Copy address"
                     >
-                      📋
+                    
                     </button>
                   </div>
                 </div>
@@ -472,7 +471,7 @@ const EventDetail: React.FC = () => {
                         className="text-gray-500 hover:text-gray-700 text-xs p-1"
                         title="Copy address"
                       >
-                        📋
+                        
                       </button>
                     )}
                   </div>
@@ -483,7 +482,7 @@ const EventDetail: React.FC = () => {
         </div>
       </div>
 
-      {/* Action Buttons */}
+      
       {isConnected && (
         <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Actions</h3>
@@ -551,7 +550,7 @@ const EventDetail: React.FC = () => {
 
           {actionError && (
             <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-4">
-              <span className="text-red-800 text-sm">❌ {actionError}</span>
+              <span className="text-red-800 text-sm"> {actionError}</span>
             </div>
           )}
 
@@ -573,7 +572,7 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
-      {/* Participants Section */}
+      {/* Participants section */}
       {event.participants.length > 0 && (
         <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
@@ -602,7 +601,7 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
-      {/* Winners Section */}
+      {/* winners selection section */}
       {event.winners.length > 0 && (
         <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
           <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
@@ -640,8 +639,7 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
-      {/* QR Code Section */}
-      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+           <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
         <h3 className="text-xl font-semibold text-gray-900 mb-4">Share Event</h3>
         <QRCodeGenerator
           value={window.location.href}
@@ -650,7 +648,7 @@ const EventDetail: React.FC = () => {
           className="max-w-md mx-auto"
         />
       </div>
-    </div>
+    </div>          
   );
 };
 

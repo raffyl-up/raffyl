@@ -46,7 +46,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
   return (
     <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-4 sm:p-6 hover:shadow-xl transition-shadow duration-200">
-      {/* Header */}
+      
       <div className="flex flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6">
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
           {event.name}
@@ -60,7 +60,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         </span>
       </div>
 
-      {/* Details */}
+    
       <div className="space-y-3 mb-4 sm:mb-6">
         <div className="flex justify-between items-center text-sm sm:text-base">
           <span className="text-gray-600 font-medium">Organizer:</span>
@@ -93,7 +93,6 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
       {/* Actions */}
       <div className="mt-4">
-        {/* View Details Button - Always visible */}
         <button
           onClick={() => navigate(`/event/${event.address}`)}
           className="w-full py-2 sm:py-3 px-4 rounded-lg font-medium text-sm sm:text-base transition-all duration-200 bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg"
@@ -102,7 +101,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         </button>
       </div>
 
-      {/* Contract Address */}
+      
       <div className="mt-4 pt-4 border-t border-gray-200">
         <p className="text-xs sm:text-sm text-gray-500 text-center">
           Contract:{" "}

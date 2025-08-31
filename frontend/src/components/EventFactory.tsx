@@ -6,6 +6,7 @@ import { SUPPORTED_TOKENS } from '../lib/constants';
 import { toastService } from '../services/toast';
 import TokenSelector from './ui/TokenSelector';
 import Button from './ui/Button';
+import { useWeb3 } from '../Web3Context';
 import Card from './ui/Card';
 import { useWeb3 } from '../Web3Context';
 
@@ -139,7 +140,8 @@ const EventFactory: React.FC = () => {
       {!isContractDeployed(CONTRACT_ADDRESSES.EVENT_FACTORY) && (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <p className="text-yellow-800 text-sm sm:text-base text-center">
-            ⚠️ Contracts not deployed yet. Please deploy contracts first.
+            Contracts not deployed yet. Please deploy contracts first.
+           
           </p>
         </div>
       )}
@@ -208,7 +210,7 @@ const EventFactory: React.FC = () => {
 
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <span className="text-red-800 text-sm sm:text-base">❌ {error}</span>
+            <span className="text-red-800 text-sm sm:text-base">{error}</span>
           </div>
         )}
 

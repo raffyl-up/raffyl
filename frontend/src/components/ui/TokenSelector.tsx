@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaLightbulb, FaCheck } from 'react-icons/fa';
+import { FiAlertTriangle } from 'react-icons/fi';
 import { SUPPORTED_TOKENS, getTokenDisplayName, getTokenBySymbol, isNativeToken, type TokenConfig } from '../../lib/constants';
 
 interface TokenSelectorProps {
@@ -50,16 +52,28 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
 
       {false && (
         <div className="text-xs sm:text-sm text-gray-500 space-y-1">
-          <p>💡 Choose the token for prize distribution</p>
+          <p className="flex items-center gap-2">
+            <FaLightbulb className="text-yellow-500" />
+            Choose the token for prize distribution
+          </p>
           {selectedToken && (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-2">
               <p className="text-blue-700 font-medium">
                 Selected: {getTokenDisplayName(selectedToken as TokenConfig)}
               </p>
               <p className="text-blue-600 text-xs">
-                {isNativeToken((selectedToken as TokenConfig).address) 
-                  ? "✅ Native token - no approval needed" 
-                  : "⚠️ ERC20 token - approval required for funding"}
+                {isNativeToken((selectedToken as TokenConfig).address)
+                  ? (
+                    <span className="flex items-center gap-1">
+                      <FaCheck className="text-green-500" />
+                      Native token - no approval needed
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <FiAlertTriangle className="text-yellow-500" />
+                      ERC20 token - approval required for funding
+                    </span>
+                  )}
               </p>
             </div>
           )}
