@@ -1,9 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import { FaLightbulb, FaCheck } from 'react-icons/fa';
 import { FiAlertTriangle } from 'react-icons/fi';
-=======
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
 import { SUPPORTED_TOKENS, getTokenDisplayName, getTokenBySymbol, isNativeToken, type TokenConfig } from '../../lib/constants';
 
 interface TokenSelectorProps {
@@ -55,21 +52,16 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
 
       {false && (
         <div className="text-xs sm:text-sm text-gray-500 space-y-1">
-<<<<<<< HEAD
           <p className="flex items-center gap-2">
             <FaLightbulb className="text-yellow-500" />
             Choose the token for prize distribution
           </p>
-=======
-          <p>💡 Choose the token for prize distribution</p>
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
           {selectedToken && (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-2">
               <p className="text-blue-700 font-medium">
                 Selected: {getTokenDisplayName(selectedToken as TokenConfig)}
               </p>
               <p className="text-blue-600 text-xs">
-<<<<<<< HEAD
                 {isNativeToken((selectedToken as TokenConfig).address)
                   ? (
                     <span className="flex items-center gap-1">
@@ -82,11 +74,6 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
                       ERC20 token - approval required for funding
                     </span>
                   )}
-=======
-                {isNativeToken((selectedToken as TokenConfig).address) 
-                  ? "✅ Native token - no approval needed" 
-                  : "⚠️ ERC20 token - approval required for funding"}
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
               </p>
             </div>
           )}
@@ -96,8 +83,4 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
   );
 };
 
-<<<<<<< HEAD
 export default TokenSelector;
-=======
-export default TokenSelector;
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc

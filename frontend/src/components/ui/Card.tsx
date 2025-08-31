@@ -42,8 +42,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-<<<<<<< HEAD
 export default Card;
-=======
-export default Card;
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc

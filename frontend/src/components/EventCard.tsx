@@ -4,8 +4,8 @@ import {
   formatAddress,
   formatTokenAmount,
   getEventStateLabel,
-} from "../contracts";
-import type { EventStateType } from "../contracts";
+} from "../contracts.ts";
+import type { EventStateType } from "../contracts.ts";
 
 interface EventData {
   address: string;

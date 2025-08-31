@@ -4,7 +4,6 @@ import { Contract } from 'ethers';
 import { GiWheelbarrow } from 'react-icons/gi';
 import { FaTrophy } from 'react-icons/fa';
 import { GiPartyPopper } from 'react-icons/gi';
-import { useWeb3 } from '../Web3Context';
 import {
   EVENT_ABI,
   ERC20_ABI,
@@ -13,10 +12,11 @@ import {
   formatTokenAmount,
   getEventStateLabel,
   parseTokenAmount,
-} from '../contracts';
+} from '../contracts.ts';
 import { getTokenByAddress, isNativeToken } from '../lib/constants';
-import type { EventStateType } from '../contracts';
+import type { EventStateType } from '../contracts.ts';
 import QRCodeGenerator from './QRCodeGenerator';
+import { useWeb3 } from '../Web3Context';
 
 interface EventDetailData {
   address: string;
@@ -639,12 +639,7 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
-<<<<<<< HEAD
            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
-=======
-      {/* QR Code Section */}
-      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
         <h3 className="text-xl font-semibold text-gray-900 mb-4">Share Event</h3>
         <QRCodeGenerator
           value={window.location.href}
@@ -653,17 +648,8 @@ const EventDetail: React.FC = () => {
           className="max-w-md mx-auto"
         />
       </div>
-    </div>
-<<<<<<< HEAD
-      
-    </div>
+    </div>          
   );
 };
 
 export default EventDetail;
-=======
-  );
-};
-
-export default EventDetail;
->>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc

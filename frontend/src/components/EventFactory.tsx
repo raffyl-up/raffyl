@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Contract } from 'ethers';
 import { GiWheelbarrow } from 'react-icons/gi';
-import { useWeb3 } from '../Web3Context';
-import { CONTRACT_ADDRESSES, EVENT_FACTORY_ABI, parseTokenAmount, isContractDeployed } from '../contracts';
+import { CONTRACT_ADDRESSES, EVENT_FACTORY_ABI, parseTokenAmount, isContractDeployed } from '../contracts.ts';
 import { SUPPORTED_TOKENS } from '../lib/constants';
 import { toastService } from '../services/toast';
 import TokenSelector from './ui/TokenSelector';
 import Button from './ui/Button';
+import { useWeb3 } from '../Web3Context';
 import Card from './ui/Card';
 
 const EventFactory: React.FC = () => {

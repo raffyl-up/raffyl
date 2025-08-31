@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { ethers, BrowserProvider } from 'ethers';
-import { NETWORK_CONFIG } from './contracts';
+import { NETWORK_CONFIG } from './contracts.ts';
 
 interface Web3ContextType {
   provider: BrowserProvider | null;
