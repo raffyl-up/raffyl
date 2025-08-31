@@ -4,6 +4,7 @@ import { Contract } from 'ethers';
 import { GiWheelbarrow } from 'react-icons/gi';
 import { FaTrophy } from 'react-icons/fa';
 import { GiPartyPopper } from 'react-icons/gi';
+import { useWeb3 } from '../Web3Context';
 
 import {
   EVENT_ABI,
@@ -16,7 +17,7 @@ import {
 } from '../contracts';
 import { getTokenByAddress, isNativeToken } from '../lib/constants';
 import type { EventStateType } from '../contracts';
-
+import QRCodeGenerator from './QRCodeGenerator';
 
 interface EventDetailData {
   address: string;
@@ -640,7 +641,16 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
-      {/* select qrcode here */}
+           <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">Share Event</h3>
+        <QRCodeGenerator
+          value={window.location.href}
+          title={`${event.name} Event`}
+          size={200}
+          className="max-w-md mx-auto"
+        />
+      </div>
+    </div>
       
     </div>
   );
