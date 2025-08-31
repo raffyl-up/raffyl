@@ -5,7 +5,6 @@ import { GiWheelbarrow } from 'react-icons/gi';
 import { FaTrophy } from 'react-icons/fa';
 import { GiPartyPopper } from 'react-icons/gi';
 import { useWeb3 } from '../Web3Context';
-
 import {
   EVENT_ABI,
   ERC20_ABI,
@@ -189,7 +188,6 @@ const EventDetail: React.FC = () => {
       let fundTx;
 
       if (isNativeToken(event.tokenAddress)) {
-
         fundTx = await eventContract.fundEvent(amountWei, {
           value: amountWei
         });
@@ -641,7 +639,12 @@ const EventDetail: React.FC = () => {
         </div>
       )}
 
+<<<<<<< HEAD
            <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+=======
+      {/* QR Code Section */}
+      <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
+>>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
         <h3 className="text-xl font-semibold text-gray-900 mb-4">Share Event</h3>
         <QRCodeGenerator
           value={window.location.href}
@@ -651,9 +654,16 @@ const EventDetail: React.FC = () => {
         />
       </div>
     </div>
+<<<<<<< HEAD
       
     </div>
   );
 };
 
 export default EventDetail;
+=======
+  );
+};
+
+export default EventDetail;
+>>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc

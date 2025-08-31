@@ -94,7 +94,6 @@ const AppNavigation: React.FC<{
   );
 };
 
-
 const AppFooter: React.FC = () => {
   return (
     <footer className="bg-white/5 backdrop-blur-sm border-t border-white/10 mt-auto">
@@ -136,7 +135,6 @@ const LandingPageWrapper: React.FC = () => {
   return (
     <>
       <LandingPage />
-
       <div className="fixed top-4 right-4 z-50">
         <a
           href="/app"
@@ -148,7 +146,6 @@ const LandingPageWrapper: React.FC = () => {
     </>
   );
 };
-
 
 const EventDetailWrapper: React.FC = () => {
   return (

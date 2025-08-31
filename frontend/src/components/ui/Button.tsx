@@ -4,7 +4,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
+<<<<<<< HEAD
   icon?: React.ReactNode;
+=======
+  icon?: string;
+>>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
   fullWidth?: boolean;
 }
 
@@ -50,15 +54,23 @@ const Button: React.FC<ButtonProps> = ({
         {loading && (
           <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
         )}
+<<<<<<< HEAD
         {icon && !loading && (
           <span className="flex items-center justify-center">
             {icon}
           </span>
         )}
+=======
+        {icon && !loading && <span>{icon}</span>}
+>>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc
         {children}
       </div>
     </button>
   );
 };
 
+<<<<<<< HEAD
 export default Button;
+=======
+export default Button;
+>>>>>>> 7a052882b063ba858f2ac7b7524ae73dc56491cc

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Contract } from 'ethers';
 import { GiWheelbarrow } from 'react-icons/gi';
-
+import { useWeb3 } from '../Web3Context';
 import { CONTRACT_ADDRESSES, EVENT_FACTORY_ABI, parseTokenAmount, isContractDeployed } from '../contracts';
 import { SUPPORTED_TOKENS } from '../lib/constants';
 import { toastService } from '../services/toast';
@@ -140,6 +140,7 @@ const EventFactory: React.FC = () => {
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <p className="text-yellow-800 text-sm sm:text-base text-center">
             Contracts not deployed yet. Please deploy contracts first.
+           
           </p>
         </div>
       )}
