@@ -73,10 +73,8 @@ export const parseTokenAmount = (amount: string, decimals: number = 18): bigint 
 
 export const getEventStateLabel = (state: EventStateType): string => {
   switch (Number(state)) {
-    case EventState.REGISTRATION_OPEN:
-      return "Registration Open";
-    case EventState.REGISTRATION_CLOSED:
-      return "Registration Closed";
+    case EventState.OPEN:
+      return "Open";
     case EventState.WINNERS_SELECTED:
       return "Winners Selected";
     case EventState.COMPLETED:

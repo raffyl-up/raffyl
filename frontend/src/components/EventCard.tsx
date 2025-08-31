@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {
-//   EventState,/
+  EventState,
   formatAddress,
   formatTokenAmount,
   getEventStateLabel,

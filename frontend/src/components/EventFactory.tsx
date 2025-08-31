@@ -8,7 +8,6 @@ import TokenSelector from './ui/TokenSelector';
 import Button from './ui/Button';
 import { useWeb3 } from '../Web3Context';
 import Card from './ui/Card';
-import { useWeb3 } from '../Web3Context';
 
 const EventFactory: React.FC = () => {
   const { signer, isConnected } = useWeb3();
